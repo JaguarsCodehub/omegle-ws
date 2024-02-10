@@ -4,6 +4,7 @@ import { Room } from './Room';
 
 const Landing = () => {
   const [name, setName] = useState('');
+  const [name2, setName2] = useState('');
   const [joined, setJoined] = useState(false);
   const [localVideoTrack, setLocalVideoTrack] =
     useState<MediaStreamTrack | null>(null);
@@ -41,13 +42,19 @@ const Landing = () => {
 
   if (!joined) {
     return (
-      <div>
-        <video autoPlay ref={videoRef}></video>
-        <input type='text' onChange={(e) => setName(e.target.value)} />
+      <div className='bg-black p-40'>
+        <video autoPlay ref={videoRef} className='rounded-xl' />
+        <input
+          type='text'
+          onChange={(e) => setName(e.target.value)}
+          placeholder='Enter your name'
+          className='mt-10 bg-white px-8 py-2 border border-slate-400 rounded-xl'
+        />
         <button
           onClick={() => {
             setJoined(true);
           }}
+          className='bg-blue-700 text-white px-10 p-4 m-6 rounded-xl'
         >
           Join
         </button>
@@ -58,6 +65,7 @@ const Landing = () => {
   return (
     <Room
       name={name}
+      name2={name2}
       localAudioTrack={localAudioTrack}
       localVideoTrack={localVideoTrack}
     />

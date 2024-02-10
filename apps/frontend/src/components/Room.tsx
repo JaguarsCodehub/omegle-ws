@@ -6,10 +6,12 @@ const URL = 'http://localhost:3000';
 
 export const Room = ({
   name,
+  name2,
   localAudioTrack,
   localVideoTrack,
 }: {
   name: string;
+  name2: string;
   localAudioTrack: MediaStreamTrack | null;
   localVideoTrack: MediaStreamTrack | null;
 }) => {
@@ -205,11 +207,18 @@ export const Room = ({
   }, [localVideoRef]);
 
   return (
-    <div>
-      Hi {name}
-      <video autoPlay width={400} height={400} ref={localVideoRef} />
-      {lobby ? 'Waiting to connect you to someone' : null}
-      <video autoPlay width={400} height={400} ref={remoteVideoRef} />
+    <div className='p-40 bg-black'>
+      <video autoPlay width={500} height={500} ref={localVideoRef} />
+      <p className='mt-5 text-white text-2xl font-semibold'>Hello {name}</p>
+      <div className='mt-10'>
+        {lobby ? (
+          <p className='text-white text-4xl font-semibold'>
+            Waiting to connect you to someone
+          </p>
+        ) : null}
+      </div>
+      <video autoPlay width={500} height={500} ref={remoteVideoRef} />
+      {name2}
     </div>
   );
 };
